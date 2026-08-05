@@ -1,129 +1,115 @@
-title: Project GDL Portal
 screens:
-- title: Welcome!
-  description: Get to know Project GDL
-  actions:
-  - id: gdl-telegram
-    icon: telegram
-    title: Join our Telegram community
+- actions:
+  - default: false
     description: Get help, news, and discussion
-    default: false
+    icon: telegram
+    id: gdl-telegram
     script: xdg-open https://t.me/+HmbbMdR-GTo2ZTIy
-  - id: gdl-base-os
-    icon: project-gdl
-    title: Project GDL Base OS
+    title: Join our Telegram community
+  - default: false
     description: View the base OS and available releases on GitHub
-    default: false
+    icon: project-gdl
+    id: gdl-base-os
     script: xdg-open https://github.com/ProjectGDL/base-os
-  - id: gdl-issues
-    icon: tools-report-bug
-    title: Report issues and view bug tracker
+    title: Project GDL Base OS
+  - default: false
     description: Report bugs or view known issues on GitHub
-    default: false
+    icon: tools-report-bug
+    id: gdl-issues
     script: xdg-open https://github.com/ProjectGDL/base-os/issues
-  - id: gdl-github
-    icon: github
-    title: Visit our GitHub organization
+    title: Report issues and view bug tracker
+  - default: false
     description: Explore Project GDL repositories
-    default: false
+    icon: github
+    id: gdl-github
     script: xdg-open https://github.com/ProjectGDL
-- title: Install Applications
-  description: Get and configure software
-  actions:
-  - id: android-platform-tools
-    icon: android
-    title: Android Platform Tools
+    title: Visit our GitHub organization
+  description: Get to know Project GDL
+  title: Welcome!
+- actions:
+  - default: false
     description: CLI tools for Android development
-    default: false
+    icon: android
+    id: android-platform-tools
     script: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew install
       --cask android-platform-tools
-  - id: antigravity-linux
-    icon: antigravity
-    title: Antigravity
+    title: Android Platform Tools
+  - default: false
     description: Google's AI-powered IDE
-    default: false
+    icon: antigravity
+    id: antigravity-linux
     script: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew tap ublue-os/tap
       && brew trust --tap ublue-os/tap && brew install --cask antigravity-linux
-  - id: asus
-    icon: asus-rog
-    title: asusctl & ROG Control Center
+    title: Antigravity
+  - default: false
     description: ASUS hardware management utilities
-    default: false
-    status_script: ujust asus status
+    icon: asus-rog
+    id: asus
     options:
     - id: install
       label: Install asusctl & ROG Control Center
-      script: ujust asus install; status=$?; echo; echo "Press Enter to close...";
-        read -r _; exit $status
+      script: ujust asus install; status=$?; exit $status
     - id: uninstall
       label: Uninstall asusctl & ROG Control Center
-      script: ujust asus uninstall; status=$?; echo; echo "Press Enter to close...";
-        read -r _; exit $status
-  - id: bazzite-cli
-    icon: bazzite-cli
-    title: Bazzite CLI
+      script: ujust asus uninstall; status=$?; exit $status
+    status_script: ujust asus status
+    title: asusctl & ROG Control Center
+  - default: false
     description: Bluefin-style CLI setup with utilities
-    default: false
+    icon: bazzite-cli
+    id: bazzite-cli
     options:
     - id: enable
       label: Enable Bazzite CLI
       script: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && ujust bazzite-cli
-        enable; status=$?; echo; echo "Press Enter to close..."; read -r _; exit $status
+        enable; status=$?; exit $status
     - id: disable
       label: Disable Bazzite CLI
-      script: ujust bazzite-cli disable; status=$?; echo; echo "Press Enter to close...";
-        read -r _; exit $status
-  - id: boxtron
-    icon: dosbox
-    title: Boxtron
+      script: ujust bazzite-cli disable; status=$?; exit $status
+    title: Bazzite CLI
+  - default: false
     description: DOS games via Steam Play + Distrobox
-    default: false
-    status_script: ujust install-boxtron status
+    icon: dosbox
+    id: boxtron
     options:
     - id: install
       label: Install Boxtron
-      script: ujust install-boxtron install; status=$?; echo; echo "Press Enter to
-        close..."; read -r _; exit $status
+      script: ujust install-boxtron install; status=$?; exit $status
     - id: uninstall
       label: Uninstall Boxtron
-      script: ujust install-boxtron uninstall; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: coolercontrol
-    icon: coolercontrol
-    title: CoolerControl
+      script: ujust install-boxtron uninstall; status=$?; exit $status
+    status_script: ujust install-boxtron status
+    title: Boxtron
+  - default: false
     description: Monitor sensors and set thermal profiles
-    default: false
-    status_script: ujust install-coolercontrol status
+    icon: coolercontrol
+    id: coolercontrol
     options:
     - id: install
       label: Install CoolerControl
-      script: ujust install-coolercontrol install; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust install-coolercontrol install; status=$?; exit $status
     - id: uninstall
       label: Uninstall CoolerControl
       script: ujust install-coolercontrol uninstall; status=$?; echo; echo "Press
-        Enter to close..."; read -r _; exit $status
-  - id: davinci-resolve
-    icon: davinci-resolve
-    title: DaVinci Resolve
+    status_script: ujust install-coolercontrol status
+    title: CoolerControl
+  - default: false
     description: Professional video editor (NLE) via davincibox
-    default: false
-    status_script: ujust install-davinci status
+    icon: davinci-resolve
+    id: davinci-resolve
     options:
     - id: install
       label: Install/Upgrade DaVinci Resolve
-      script: ujust install-davinci install; status=$?; echo; echo "Press Enter to
-        close..."; read -r _; exit $status
+      script: ujust install-davinci install; status=$?; exit $status
     - id: uninstall
       label: Uninstall DaVinci Resolve
-      script: ujust install-davinci uninstall; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: decky-loader
-    icon: decky
-    title: Decky Loader
+      script: ujust install-davinci uninstall; status=$?; exit $status
+    status_script: ujust install-davinci status
+    title: DaVinci Resolve
+  - default: false
     description: Plugin loader for Steam/Steam Deck
-    default: false
-    status_script: ujust setup-decky status
+    icon: decky
+    id: decky-loader
     options:
     - id: install
       label: Install Decky
@@ -134,12 +120,12 @@ screens:
     - id: uninstall
       label: Uninstall Decky
       script: ujust setup-decky uninstall
-  - id: decky-bazzite-buddy
-    icon: decky-plugin
-    title: Decky Plugin — Bazzite Buddy
+    status_script: ujust setup-decky status
+    title: Decky Loader
+  - default: false
     description: View Bazzite version changes in Game Mode
-    default: false
-    status_script: ujust get-decky-bazzite-buddy status
+    icon: decky-plugin
+    id: decky-bazzite-buddy
     options:
     - id: install
       label: Install Bazzite Buddy Plugin
@@ -147,12 +133,12 @@ screens:
     - id: uninstall
       label: Uninstall Bazzite Buddy Plugin
       script: ujust get-decky-bazzite-buddy uninstall
-  - id: decky-lossless-scaling
-    icon: lossless-scaling
-    title: Decky Plugin — Lossless Scaling
+    status_script: ujust get-decky-bazzite-buddy status
+    title: Decky Plugin — Bazzite Buddy
+  - default: false
     description: Configure Lossless Scaling frame generation
-    default: false
-    status_script: ujust get-decky-lossless-scaling status
+    icon: lossless-scaling
+    id: decky-lossless-scaling
     options:
     - id: install
       label: Install Lossless Scaling Plugin
@@ -160,12 +146,12 @@ screens:
     - id: uninstall
       label: Uninstall Lossless Scaling Plugin
       script: ujust get-decky-lossless-scaling uninstall
-  - id: decky-framegen
-    icon: optiscaler
-    title: Decky Plugin — OptiScaler
+    status_script: ujust get-decky-lossless-scaling status
+    title: Decky Plugin — Lossless Scaling
+  - default: false
     description: Configure upscaling and frame generation for Steam games
-    default: false
-    status_script: ujust get-framegen status
+    icon: optiscaler
+    id: decky-framegen
     options:
     - id: install
       label: Install OptiScaler Plugin
@@ -173,12 +159,12 @@ screens:
     - id: uninstall
       label: Uninstall OptiScaler Plugin
       script: ujust get-framegen uninstall
-  - id: emudeck
-    icon: emudeck
-    title: EmuDeck
+    status_script: ujust get-framegen status
+    title: Decky Plugin — OptiScaler
+  - default: false
     description: Curated video game emulation setup for Steam Deck
-    default: false
-    status_script: ujust get-emudeck status
+    icon: emudeck
+    id: emudeck
     options:
     - id: install
       label: Install EmuDeck
@@ -186,64 +172,58 @@ screens:
     - id: uninstall
       label: Uninstall EmuDeck
       script: ujust get-emudeck uninstall
-  - id: jetbrains-toolbox-linux
-    icon: jetbrains-toolbox
-    title: JetBrains Toolbox
+    status_script: ujust get-emudeck status
+    title: EmuDeck
+  - default: false
     description: Manage JetBrains IDE installs via Brew
-    default: false
+    icon: jetbrains-toolbox
+    id: jetbrains-toolbox-linux
     script: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew tap ublue-os/tap
       && brew trust --tap ublue-os/tap && brew install --cask jetbrains-toolbox-linux
-  - id: lm-studio-linux
-    icon: lm-studio
-    title: LM Studio
+    title: JetBrains Toolbox
+  - default: false
     description: Local LLM suite via Brew
-    default: false
+    icon: lm-studio
+    id: lm-studio-linux
     script: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew tap ublue-os/tap
       && brew trust --tap ublue-os/tap && brew install --cask lm-studio-linux
-  - id: lsfg-vk
-    icon: lossless-scaling
-    title: Lossless Scaling — Vulkan Layer
+    title: LM Studio
+  - default: false
     description: Vulkan adapter for Lossless Scaling on Linux
-    default: false
-    status_script: ujust get-lsfg status
+    icon: lossless-scaling
+    id: lsfg-vk
     options:
     - id: install
       label: Install «lsfg-vk»
-      script: ujust get-lsfg install; status=$?; echo; echo "Press Enter to close...";
-        read -r _; exit $status
+      script: ujust get-lsfg install; status=$?; exit $status
     - id: uninstall
       label: Uninstall «lsfg-vk»
-      script: ujust get-lsfg uninstall; status=$?; echo; echo "Press Enter to close...";
-        read -r _; exit $status
-  - id: openrazer
-    icon: openrazer
-    title: OpenRazer
+      script: ujust get-lsfg uninstall; status=$?; exit $status
+    status_script: ujust get-lsfg status
+    title: Lossless Scaling — Vulkan Layer
+  - default: false
     description: Linux support for Razer gaming hardware
-    default: false
-    status_script: ujust install-openrazer status
+    icon: openrazer
+    id: openrazer
     options:
     - id: install-razer-genie
       label: Install with Razer Genie
       script: ujust install-openrazer install-razer-genie; status=$?; echo; echo "Press
-        Enter to close..."; read -r _; exit $status
     - id: install-polychromatic
       label: Install with Polychromatic
       script: ujust install-openrazer install-polychromatic; status=$?; echo; echo
-        "Press Enter to close..."; read -r _; exit $status
     - id: install
       label: Install without Frontend
-      script: ujust install-openrazer install; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust install-openrazer install; status=$?; exit $status
     - id: uninstall
       label: Uninstall All
-      script: ujust install-openrazer uninstall; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: openrgb
-    icon: openrgb
-    title: OpenRGB
+      script: ujust install-openrazer uninstall; status=$?; exit $status
+    status_script: ujust install-openrazer status
+    title: OpenRazer
+  - default: false
     description: Open source RGB lighting control
-    default: false
-    status_script: ujust openrgb status
+    icon: openrgb
+    id: openrgb
     options:
     - id: install
       label: Install OpenRGB
@@ -251,12 +231,12 @@ screens:
     - id: uninstall
       label: Uninstall OpenRGB
       script: ujust openrgb uninstall
-  - id: opentabletdriver
-    icon: opentabletdriver
-    title: OpenTabletDriver
+    status_script: ujust openrgb status
+    title: OpenRGB
+  - default: false
     description: Drawing tablet driver with open source
-    default: false
-    status_script: ujust opentabletdriver status
+    icon: opentabletdriver
+    id: opentabletdriver
     options:
     - id: install
       label: Install OpenTabletDriver
@@ -264,12 +244,12 @@ screens:
     - id: uninstall
       label: Uninstall OpenTabletDriver
       script: ujust opentabletdriver uninstall
-  - id: resilio-sync
-    icon: resilio-sync
-    title: Resilio Sync
+    status_script: ujust opentabletdriver status
+    title: OpenTabletDriver
+  - default: false
     description: File sync via BitTorrent
-    default: false
-    status_script: ujust resilio-sync status
+    icon: resilio-sync
+    id: resilio-sync
     options:
     - id: install
       label: Install Resilio Sync
@@ -277,12 +257,12 @@ screens:
     - id: Uninstall Resilio Sync
       label: Uninstall
       script: ujust resilio-sync uninstall
-  - id: steamcmd
-    icon: steam
-    title: SteamCMD
+    status_script: ujust resilio-sync status
+    title: Resilio Sync
+  - default: false
     description: CLI version of Steam for game servers
-    default: false
-    status_script: ujust get-steamcmd status
+    icon: steam
+    id: steamcmd
     options:
     - id: install
       label: Install SteamCMD
@@ -290,12 +270,12 @@ screens:
     - id: uninstall
       label: Uninstall SteamCMD
       script: ujust get-steamcmd uninstall
-  - id: sunshine
-    icon: sunshine
-    title: Sunshine
+    status_script: ujust get-steamcmd status
+    title: SteamCMD
+  - default: false
     description: Self-hosted video game streaming for Moonlight
-    default: false
-    status_script: ujust setup-sunshine status
+    icon: sunshine
+    id: sunshine
     options:
     - id: enable
       label: Enable Sunshine
@@ -315,25 +295,26 @@ screens:
     - id: portal
       label: Open Sunshine Management Portal
       script: ujust setup-sunshine portal
-  - id: visual-studio-code-linux
-    icon: visual-studio-code
-    title: Visual Studio Code
+    status_script: ujust setup-sunshine status
+    title: Sunshine
+  - default: false
     description: Microsoft code editor from Brew
-    default: false
+    icon: visual-studio-code
+    id: visual-studio-code-linux
     script: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew tap ublue-os/tap
       && brew trust --tap ublue-os/tap && brew install --cask visual-studio-code-linux
-  - id: vscodium-linux
-    icon: vscodium
-    title: VSCodium
+    title: Visual Studio Code
+  - default: false
     description: Community open source VS Code via Brew
-    default: false
+    icon: vscodium
+    id: vscodium-linux
     script: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew tap ublue-os/tap
       && brew trust --tap ublue-os/tap && brew install --cask vscodium-linux
-  - id: waydroid
-    icon: waydroid
-    title: Waydroid
+    title: VSCodium
+  - default: false
     description: Android container for Linux (no NVIDIA compatibility)
-    default: false
+    icon: waydroid
+    id: waydroid
     options:
     - id: init
       label: Initialize
@@ -350,41 +331,39 @@ screens:
     - id: helper
       label: Install Helper
       script: ujust configure-waydroid helper
-- title: Manage GDL
-  description: System management and configuration
-  actions:
-  - id: update-gdl
-    icon: system-software-update
-    title: Update your system
+    title: Waydroid
+  description: Get and configure software
+  title: Install Applications
+- actions:
+  - default: false
     description: Update GDL, Flatpak apps, and more
-    default: false
+    icon: system-software-update
+    id: update-gdl
     script: ujust update
-  - id: reset-gdl
-    icon: edit-clear
-    title: Shed system software layers
+    title: Update your system
+  - default: false
     description: Reset rpm-ostree layers to default, remove added packages
-    default: false
+    icon: edit-clear
+    id: reset-gdl
     script: rpm-ostree reset
-  - id: cancel-pending-deployment
-    icon: process-stop
-    title: Cancel pending deployment
+    title: Shed system software layers
+  - default: false
     description: Remove next image deployment and halt pending updates
-    default: false
-    script: rpm-ostree cleanup -p; status=$?; echo; echo "Press Enter to close...";
-      read -r _; exit $status
-  - id: verify-image
-    icon: security-high
-    title: Move to a 'verified' image
+    icon: process-stop
+    id: cancel-pending-deployment
+    script: rpm-ostree cleanup -p; status=$?; exit $status
+    title: Cancel pending deployment
+  - default: false
     description: Detect and move to a signed Bazzite image if needed
-    default: false
+    icon: security-high
+    id: verify-image
     script: ujust verify-image; status=$?; echo; echo "Press Enter to close..."; read
       -r _; exit $status
-  - id: wake-on-lan
-    icon: network-wired
-    title: Enable Wake-on-LAN functionality
+    title: Move to a 'verified' image
+  - default: false
     description: Toggle magic packet detection for remote power-on
-    default: false
-    status_script: ujust wol status
+    icon: network-wired
+    id: wake-on-lan
     options:
     - id: enable
       label: Enable Wake-on-LAN
@@ -395,12 +374,12 @@ screens:
     - id: force-enable
       label: Force Enable Wake-on-LAN
       script: ujust wol force-enable
-  - id: ssh-service
-    icon: network-server
-    title: Enable SSH remote access
+    status_script: ujust wol status
+    title: Enable Wake-on-LAN functionality
+  - default: false
     description: Toggle SSH service for remote management
-    default: false
-    status_script: ujust ssh status
+    icon: network-server
+    id: ssh-service
     options:
     - id: enable
       label: Enable SSH Access
@@ -408,11 +387,12 @@ screens:
     - id: disable
       label: Disable SSH Access
       script: ujust ssh disable
-  - id: hide-grub
-    icon: preferences-system
-    title: Manage GRUB menu visibility
+    status_script: ujust ssh status
+    title: Enable SSH remote access
+  - default: true
     description: Configure GRUB menu appearance at boot
-    default: true
+    icon: preferences-system
+    id: hide-grub
     options:
     - id: hide
       label: Hide After Successful Boot
@@ -423,11 +403,11 @@ screens:
     - id: show
       label: Always Show GRUB
       script: ujust configure-grub show
-  - id: grub-timeout
-    icon: chronometer
-    title: Configure GRUB menu timeout
+    title: Manage GRUB menu visibility
+  - default: false
     description: Set GRUB wait time before default boot
-    default: false
+    icon: chronometer
+    id: grub-timeout
     options:
     - id: no-timeout
       label: No Timeout
@@ -450,21 +430,20 @@ screens:
     - id: custom
       label: Wait a Custom Amount
       script: ujust grub-timeout custom
-  - id: Reboot to UEFI
-    icon: system-reboot
-    title: Reboot to UEFI firmware settings
+    title: Configure GRUB menu timeout
+  - default: false
     description: Reboot to UEFI for boot/firmware changes
-    default: false
+    icon: system-reboot
+    id: Reboot to UEFI
     script: systemctl reboot --firmware-setup
-- title: Tweak Systems
-  description: System adjustments and tools
-  actions:
-  - id: add-input-group
-    icon: input-gaming
-    title: Add «input» to your user groups
+    title: Reboot to UEFI firmware settings
+  description: System management and configuration
+  title: Manage GDL
+- actions:
+  - default: true
     description: Required by controllers and CBF
-    default: true
-    status_script: ujust add-user-to-input-group status
+    icon: input-gaming
+    id: add-input-group
     options:
     - id: add
       label: Add User to «input» Group
@@ -472,18 +451,18 @@ screens:
     - id: remove
       label: Remove User from «input» Group
       script: ujust add-user-to-input-group remove
-  - id: boot-to-windows
-    icon: distributor-logo-windows
-    title: Boot to Windows from Steam
+    status_script: ujust add-user-to-input-group status
+    title: Add «input» to your user groups
+  - default: false
     description: Add Steam shortcut for dual-boot Windows
-    default: false
+    icon: distributor-logo-windows
+    id: boot-to-windows
     script: ujust setup-boot-windows-steam
-  - id: steam-icons
-    icon: desktop
-    title: Clean Steam desktop icons automatically
+    title: Boot to Windows from Steam
+  - default: false
     description: Remove Steam-generated desktop icons via login script
-    default: false
-    status_script: ujust steam-icons status
+    icon: desktop
+    id: steam-icons
     options:
     - id: remove
       label: One-Time Removal
@@ -494,12 +473,12 @@ screens:
     - id: disable
       label: Disable Auto-Cleanup
       script: ujust steam-icons disable
-  - id: snapper
-    icon: drive-harddisk
-    title: Configure btrfs snapshots
+    status_script: ujust steam-icons status
+    title: Clean Steam desktop icons automatically
+  - default: false
     description: Manage Snapper snapshots for /var/home
-    default: false
-    status_script: ujust configure-snapshots status
+    icon: drive-harddisk
+    id: snapper
     options:
     - id: enable
       label: Enable Automatic Snapshots
@@ -513,26 +492,25 @@ screens:
     - id: btrfs-assistant
       label: Open Btrfs Assistant
       script: setsid -f gtk-launch btrfs-assistant.desktop >/dev/null 2>&1
-  - id: watchdog
-    icon: chronometer
-    title: Disable watchdog recovery mechanisms
+    status_script: ujust configure-snapshots status
+    title: Configure btrfs snapshots
+  - default: false
     description: Toggle watchdog recovery under failure conditions
-    default: false
-    status_script: ujust configure-watchdog status
+    icon: chronometer
+    id: watchdog
     options:
     - id: enable
       label: Enable Watchdog Recovery
-      script: ujust configure-watchdog enable; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust configure-watchdog enable; status=$?; exit $status
     - id: disable
       label: Disable Watchdog Recovery
-      script: ujust configure-watchdog disable; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: global-dlss
-    icon: nvidia-dlss
-    title: Enable globally upgrading DLSS
+      script: ujust configure-watchdog disable; status=$?; exit $status
+    status_script: ujust configure-watchdog status
+    title: Disable watchdog recovery mechanisms
+  - default: false
     description: Toggle DLSS auto-upgrade (requires Proton-GE, etc.)
-    default: false
+    icon: nvidia-dlss
+    id: global-dlss
     options:
     - id: enable
       label: Enable Autoupgrading DLSS
@@ -540,11 +518,11 @@ screens:
     - id: disable
       label: Disable Autoupgrading DLSS
       script: ujust global-dlss disable
-  - id: global-fsr4-rdna3
-    icon: amd-fsr
-    title: Enable globally upgrading FSR3.1+ to FSR4 — for RDNA3 graphics cards
+    title: Enable globally upgrading DLSS
+  - default: false
     description: Toggle FSR auto-upgrade for RDNA3 (7000 series)
-    default: false
+    icon: amd-fsr
+    id: global-fsr4-rdna3
     options:
     - id: enable
       label: Enable Autoupgrading FSR (RDNA3)
@@ -552,11 +530,11 @@ screens:
     - id: disable
       label: Disable Autoupgrading FSR (RDNA3)
       script: ujust global-fsr4-rdna3 disable
-  - id: global-fsr4
-    icon: amd-fsr
-    title: Enable globally upgrading FSR3.1+ to FSR4 — for RDNA4 graphics cards
+    title: Enable globally upgrading FSR3.1+ to FSR4 — for RDNA3 graphics cards
+  - default: false
     description: Toggle FSR auto-upgrade (requires Proton 10+)
-    default: false
+    icon: amd-fsr
+    id: global-fsr4
     options:
     - id: enable
       label: Enable Autoupgrading FSR
@@ -564,11 +542,11 @@ screens:
     - id: disable
       label: Disable Autoupgrading FSR
       script: ujust global-fsr4 disable
-  - id: password-asterisks
-    icon: dialog-password
-    title: Enable visible password asterisks in CLI
+    title: Enable globally upgrading FSR3.1+ to FSR4 — for RDNA4 graphics cards
+  - default: false
     description: Show feedback for sudo password input
-    default: false
+    icon: dialog-password
+    id: password-asterisks
     options:
     - id: 'on'
       label: Show Password Asterisks
@@ -576,78 +554,68 @@ screens:
     - id: 'off'
       label: Hide Password Asterisks
       script: ujust password-feedback off
-  - id: displaylink
-    icon: video-display
-    title: Install support for DisplayLink
+    title: Enable visible password asterisks in CLI
+  - default: false
     description: Manage DisplayLink for docks and USB adapters
-    default: false
-    status_script: ujust install-displaylink status
+    icon: video-display
+    id: displaylink
     options:
     - id: install
       label: Install DisplayLink Support
-      script: ujust install-displaylink install; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust install-displaylink install; status=$?; exit $status
     - id: uninstall
       label: Uninstall DisplayLink Support
-      script: ujust install-displaylink uninstall; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: configure-beesd
-    icon: drive-harddisk
-    title: Setup btrfs deduplication
+      script: ujust install-displaylink uninstall; status=$?; exit $status
+    status_script: ujust install-displaylink status
+    title: Install support for DisplayLink
+  - default: false
     description: Configure beesd for btrfs deduplication
-    default: false
-    script: ujust configure-beesd; status=$?; echo; echo "Press Enter to close...";
-      read -r _; exit $status
-  - id: virtual-audio-channels
-    icon: audio-card
-    title: Setup separate virtual channels for audio
+    icon: drive-harddisk
+    id: configure-beesd
+    script: ujust configure-beesd; status=$?; exit $status
+    title: Setup btrfs deduplication
+  - default: false
     description: Create PipeWire sinks for Game/Voice/Browser/Music routing
-    default: false
-    status_script: ujust setup-virtual-channels status
+    icon: audio-card
+    id: virtual-audio-channels
     options:
     - id: create
       label: Add Virtual Channels
-      script: ujust setup-virtual-channels create; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust setup-virtual-channels create; status=$?; exit $status
     - id: remove
       label: Remove Virtual Channels
-      script: ujust setup-virtual-channels remove; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: virtual-headphone-surround
-    icon: audio-headphones
-    title: Setup virtual headphone surround
+      script: ujust setup-virtual-channels remove; status=$?; exit $status
+    status_script: ujust setup-virtual-channels status
+    title: Setup separate virtual channels for audio
+  - default: false
     description: Create 7.1 surround PipeWire sink via Steam Audio HRTF
-    default: false
-    status_script: ujust setup-virtual-surround status
+    icon: audio-headphones
+    id: virtual-headphone-surround
     options:
     - id: enable
       label: Add Virtual Headphone Surround
-      script: ujust setup-virtual-surround enable; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust setup-virtual-surround enable; status=$?; exit $status
     - id: disable
       label: Remove Virtual Headphone Surround
-      script: ujust setup-virtual-surround disable; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: virtualization
-    icon: computer
-    title: Setup virtualization
+      script: ujust setup-virtual-surround disable; status=$?; exit $status
+    status_script: ujust setup-virtual-surround status
+    title: Setup virtual headphone surround
+  - default: false
     description: Manage host virtualization for virt-manager
-    default: false
+    icon: computer
+    id: virtualization
     options:
     - id: virt-on
       label: Enable Virtualization Support
-      script: ujust setup-virtualization virt-on; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust setup-virtualization virt-on; status=$?; exit $status
     - id: virt-off
       label: Disable Virtualization Support
-      script: ujust setup-virtualization virt-off; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: automounting
-    icon: drive-removable-media
-    title: Toggle automatically mounting disks
+      script: ujust setup-virtualization virt-off; status=$?; exit $status
+    title: Setup virtualization
+  - default: false
     description: Manage automounting of btrfs/ext4 partitions
-    default: false
-    status_script: ujust automounting status
+    icon: drive-removable-media
+    id: automounting
     options:
     - id: enable
       label: Enable Automount
@@ -655,27 +623,25 @@ screens:
     - id: disable
       label: Disable Automount
       script: ujust automounting disable
-  - id: restore-input-remapper
-    icon: input-keyboard
-    title: Toggle Input Remapper
+    status_script: ujust automounting status
+    title: Toggle automatically mounting disks
+  - default: false
     description: Manage Input Remapper in non-desktop images
-    default: false
-    status_script: ujust restore-input-remapper status
+    icon: input-keyboard
+    id: restore-input-remapper
     options:
     - id: enable
       label: Enable Input Remapper
-      script: ujust restore-input-remapper enable; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust restore-input-remapper enable; status=$?; exit $status
     - id: disable
       label: Disable Input Remapper
-      script: ujust restore-input-remapper disable; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: steamos-automount
-    icon: media-floppy
-    title: Toggle SteamOS disk automounting
+      script: ujust restore-input-remapper disable; status=$?; exit $status
+    status_script: ujust restore-input-remapper status
+    title: Toggle Input Remapper
+  - default: false
     description: Manage SteamOS mounting rules for NTFS partitions
-    default: false
-    status_script: ujust steamos-automount status
+    icon: media-floppy
+    id: steamos-automount
     options:
     - id: enable
       label: Enable SteamOS Automounting
@@ -683,102 +649,109 @@ screens:
     - id: disable
       label: Disable SteamOS Automounting
       script: ujust steamos-automount disable
-- title: VPN Clients
-  description: Install and manage VPN clients
-  actions:
-  - id: throne
-    icon: throne-vpn
-    title: Throne VPN
+    status_script: ujust steamos-automount status
+    title: Toggle SteamOS disk automounting
+  description: System adjustments and tools
+  title: Tweak Systems
+- actions:
+  - default: false
     description: Secure VPN client for encrypted connections
-    default: false
-    status_script: ujust throne status 2>/dev/null && echo "installed" || echo "not
-      installed"
+    icon: throne-vpn
+    id: throne
     options:
     - id: install
       label: Install/Update Throne VPN
-      script: ujust throne-install; status=$?; echo; echo "Press Enter to close...";
-        read -r _; exit $status
+      script: ujust throne-install; status=$?; exit $status
     - id: uninstall
       label: Uninstall Throne VPN
-      script: ujust throne-remove; status=$?; echo; echo "Press Enter to close...";
-        read -r _; exit $status
-- title: Troubleshoot
-  description: Tools and resources for diagnosing and fixing issues
-  actions:
-  - id: get-logs
-    icon: text-x-log
-    title: Collect system logs
+      script: ujust throne-remove; status=$?; exit $status
+    status_script: ujust throne status 2>/dev/null && echo "installed" || echo "not
+      installed"
+    title: Throne VPN
+  - default: false
+    description: Self-hosted VPN client for encrypted connections
+    icon: amneziavpn
+    id: amneziavpn
+    options:
+    - id: install
+      label: Install/Update AmneziaVPN
+      script: ujust amneziavpn-install; status=$?; exit $status
+    - id: uninstall
+      label: Uninstall AmneziaVPN
+      script: ujust amneziavpn-remove; status=$?; exit $status
+    status_script: ujust amneziavpn-install status 2>/dev/null && echo "installed"
+      || echo "not installed"
+    title: AmneziaVPN
+  description: Install and manage VPN clients
+  title: VPN Clients
+- actions:
+  - default: false
     description: Gather system records into a shareable web report
-    default: false
+    icon: text-x-log
+    id: get-logs
     script: ujust get-logs; status=$?; echo; echo "Press Enter to close..."; read
       -r _; exit $status
-  - id: rollback-bazzite
-    icon: edit-undo
-    title: Rollback to the prior Bazzite deployment
+    title: Collect system logs
+  - default: false
     description: Revert to previous deployment if current has issues
-    default: false
+    icon: edit-undo
+    id: rollback-bazzite
     script: brh rollback -y && reboot
-  - id: save-panics
-    icon: dialog-warning
-    title: Enable saving kernel panics
+    title: Rollback to the prior Bazzite deployment
+  - default: false
     description: Toggle ramoops panic logger for crash records
-    default: false
-    status_script: ujust toggle-save-panics status
+    icon: dialog-warning
+    id: save-panics
     options:
     - id: enable
       label: Enable Logging with «ramoops»
-      script: ujust toggle-save-panics enable; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust toggle-save-panics enable; status=$?; exit $status
     - id: disable
       label: Disable Logging with «ramoops»
-      script: ujust toggle-save-panics disable; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: fix-proton-hang
-    icon: wine
-    title: Terminate all Wine/Proton processes
+      script: ujust toggle-save-panics disable; status=$?; exit $status
+    status_script: ujust toggle-save-panics status
+    title: Enable saving kernel panics
+  - default: false
     description: Kill stuck Wine/Proton tasks
-    default: false
+    icon: wine
+    id: fix-proton-hang
     script: ujust fix-proton-hang
-  - id: fix-gmod
-    icon: applications-games
-    title: Patch 64-bit beta version for Garry's Mod
+    title: Terminate all Wine/Proton processes
+  - default: false
     description: Fix Garry's Mod 64-bit Linux version issues
-    default: false
+    icon: applications-games
+    id: fix-gmod
     script: ujust fix-gmod
-  - id: fix-reset-steam
-    icon: steam
-    title: Reset Steam installation
+    title: Patch 64-bit beta version for Garry's Mod
+  - default: false
     description: Remove local Steam files and reacquire from Valve
-    default: false
+    icon: steam
+    id: fix-reset-steam
     script: ujust fix-reset-steam
-  - id: restart-pipewire
-    icon: audio-volume-high
-    title: Restart PipeWire service
+    title: Reset Steam installation
+  - default: false
     description: Restart audio and MIDI device service
-    default: false
-    script: ujust restart-pipewire; status=$?; echo; echo "Press Enter to close...";
-      read -r _; exit $status
-  - id: bluetooth-headset-mic
-    icon: network-bluetooth
-    title: Disable microphone in Bluetooth headsets
+    icon: audio-volume-high
+    id: restart-pipewire
+    script: ujust restart-pipewire; status=$?; exit $status
+    title: Restart PipeWire service
+  - default: false
     description: Toggle microphone profile for full playback quality
-    default: false
-    status_script: ujust toggle-bt-mic status
+    icon: network-bluetooth
+    id: bluetooth-headset-mic
     options:
     - id: enable
       label: Disable Microphone Profile
-      script: ujust toggle-bt-mic enable; status=$?; echo; echo "Press Enter to close...";
-        read -r _; exit $status
+      script: ujust toggle-bt-mic enable; status=$?; exit $status
     - id: disable
       label: Enable Microphone Profile
-      script: ujust toggle-bt-mic disable; status=$?; echo; echo "Press Enter to close...";
-        read -r _; exit $status
-  - id: cec-mode
-    icon: video-display
-    title: Change CEC mode
+      script: ujust toggle-bt-mic disable; status=$?; exit $status
+    status_script: ujust toggle-bt-mic status
+    title: Disable microphone in Bluetooth headsets
+  - default: false
     description: Toggle HDMI-CEC routing for home theater vs handhelds
-    default: false
-    status_script: ujust cec-mode status
+    icon: video-display
+    id: cec-mode
     options:
     - id: dgpu
       label: Route through dGPU
@@ -786,12 +759,12 @@ screens:
     - id: native
       label: Route Natively
       script: ujust cec-mode native
-  - id: iwd
-    icon: network-wireless
-    title: Change Wi-Fi system back-end
+    status_script: ujust cec-mode status
+    title: Change CEC mode
+  - default: false
     description: Toggle between iwd and wpa_supplicant
-    default: false
-    status_script: ujust iwd status
+    icon: network-wireless
+    id: iwd
     options:
     - id: enable
       label: Reset to «iwd»
@@ -799,54 +772,47 @@ screens:
     - id: disable
       label: Switch to «wpa_supplicant»
       script: ujust iwd disable
-  - id: intel-i915-sleep-fix
-    icon: utilities-system-monitor
-    title: Configure power saving for Intel HD Graphics
+    status_script: ujust iwd status
+    title: Change Wi-Fi system back-end
+  - default: false
     description: Manage i915 power-saving for suspend issues
-    default: false
-    status_script: ujust toggle-i915-sleep-fix status
+    icon: utilities-system-monitor
+    id: intel-i915-sleep-fix
     options:
     - id: auto
       label: Set to Auto (i915.enable_dc=-1)
-      script: ujust toggle-i915-sleep-fix auto; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust toggle-i915-sleep-fix auto; status=$?; exit $status
     - id: disable
       label: Disable Power Saving (i915.enable_dc=0)
-      script: ujust toggle-i915-sleep-fix disable; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust toggle-i915-sleep-fix disable; status=$?; exit $status
     - id: level-1
       label: Set to Level 1 (i915.enable_dc=1)
-      script: ujust toggle-i915-sleep-fix level-1; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust toggle-i915-sleep-fix level-1; status=$?; exit $status
     - id: level-2
       label: Set to Level 2 (i915.enable_dc=2)
-      script: ujust toggle-i915-sleep-fix level-2; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust toggle-i915-sleep-fix level-2; status=$?; exit $status
     - id: level-3
       label: Set to Level 3 (i915.enable_dc=3)
-      script: ujust toggle-i915-sleep-fix level-3; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust toggle-i915-sleep-fix level-3; status=$?; exit $status
     - id: level-4
       label: Set to Level 4 (i915.enable_dc=4)
-      script: ujust toggle-i915-sleep-fix level-4; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
+      script: ujust toggle-i915-sleep-fix level-4; status=$?; exit $status
     - id: unset
       label: Unset Parameter
-      script: ujust toggle-i915-sleep-fix unset; status=$?; echo; echo "Press Enter
-        to close..."; read -r _; exit $status
-  - id: benchmark
-    icon: utilities-system-monitor
-    title: Run basic processor benchmark
+      script: ujust toggle-i915-sleep-fix unset; status=$?; exit $status
+    status_script: ujust toggle-i915-sleep-fix status
+    title: Configure power saving for Intel HD Graphics
+  - default: false
     description: Start one-minute CPU performance assessment
-    default: false
+    icon: utilities-system-monitor
+    id: benchmark
     script: ujust benchmark; status=$?; echo; echo "Press Enter to close..."; read
       -r _; exit $status
-  - id: reisub
-    icon: system-shutdown
-    title: Enable REISUB failure recovery
+    title: Run basic processor benchmark
+  - default: false
     description: Toggle magic SysRq key for force-reboot (security risk)
-    default: false
-    status_script: ujust reisub status
+    icon: system-shutdown
+    id: reisub
     options:
     - id: enable
       label: Enable REISUB Recovery
@@ -854,9 +820,14 @@ screens:
     - id: disable
       label: Disable REISUB Recovery
       script: ujust reisub disable
-  - id: regenerate-grub
-    icon: preferences-system
-    title: Regenerate GRUB configuration file
+    status_script: ujust reisub status
+    title: Enable REISUB failure recovery
+  - default: false
     description: Generate new GRUB config and probe for Windows
-    default: false
+    icon: preferences-system
+    id: regenerate-grub
     script: ujust regenerate-grub
+    title: Regenerate GRUB configuration file
+  description: Tools and resources for diagnosing and fixing issues
+  title: Troubleshoot
+title: Project GDL Portal
