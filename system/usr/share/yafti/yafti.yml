@@ -682,6 +682,20 @@ screens:
     status_script: ujust amneziavpn-install status 2>/dev/null && echo "installed"
       || echo "not installed"
     title: AmneziaVPN
+  - default: false
+    description: v2rayN (Avalonia) GUI client for proxies
+    icon: v2rayn
+    id: v2rayn
+    options:
+    - id: install
+      label: Install/Update v2rayN
+      script: ujust v2rayn-install; status=$?; exit $status
+    - id: uninstall
+      label: Uninstall v2rayN
+      script: ujust v2rayn-remove; status=$?; exit $status
+    status_script: test -f /var/lib/extensions/v2rayn.raw && echo "installed" || echo
+      "not installed"
+    title: v2rayN
   description: Install and manage VPN clients
   title: VPN Clients
 - actions:
