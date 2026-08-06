@@ -696,6 +696,20 @@ screens:
     status_script: test -f /var/lib/extensions/v2rayn.raw && echo "installed" || echo
       "not installed"
     title: v2rayN
+  - default: false
+    description: Local Telegram anti-DPI proxy
+    icon: telegram
+    id: tgwsproxy
+    options:
+    - id: install
+      label: Install/Update tg-ws-proxy
+      script: ujust tgwsproxy-install; status=$?; exit $status
+    - id: uninstall
+      label: Uninstall tg-ws-proxy
+      script: ujust tgwsproxy-remove; status=$?; exit $status
+    status_script: test -f /var/lib/extensions/tgwsproxy.raw && echo "installed" || echo
+      "not installed"
+    title: tg-ws-proxy
   description: Install and manage VPN clients
   title: VPN Clients
 - actions:
