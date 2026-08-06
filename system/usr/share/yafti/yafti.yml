@@ -710,6 +710,20 @@ screens:
     status_script: test -f /var/lib/extensions/tgwsproxy.raw && echo "installed" || echo
       "not installed"
     title: tg-ws-proxy
+  - default: false
+    description: Automatic local proxy that keeps Flathub reachable when the direct link is blocked
+    icon: network-server
+    id: inetresqued
+    options:
+    - id: enable
+      label: Enable inetresqued
+      script: ujust inetresqued-enable; status=$?; exit $status
+    - id: disable
+      label: Disable inetresqued
+      script: ujust inetresqued-disable; status=$?; exit $status
+    status_script: systemctl is-enabled inetresqued.service 2>/dev/null && echo enabled
+      || echo disabled
+    title: inetresqued
   description: Install and manage VPN clients
   title: VPN Clients
 - actions:
