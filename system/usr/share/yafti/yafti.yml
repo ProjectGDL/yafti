@@ -711,6 +711,20 @@ screens:
       "not installed"
     title: tg-ws-proxy
   - default: false
+    description: GUI frontend for zapret anti-DPI bypass tool
+    icon: bdpi
+    id: zapret
+    options:
+    - id: install
+      label: Install/Update gdl-zapret-gui
+      script: ujust zapret-install; status=$?; exit $status
+    - id: uninstall
+      label: Uninstall gdl-zapret-gui
+      script: ujust zapret-remove; status=$?; exit $status
+    status_script: test -f /var/lib/extensions/zapret.raw && echo "installed" || echo
+      "not installed"
+    title: gdl-zapret-gui
+  - default: false
     description: Automatic local proxy that keeps Flathub reachable when the direct link is blocked
     icon: network-server
     id: inetresqued
