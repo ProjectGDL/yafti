@@ -726,7 +726,7 @@ screens:
     title: gdl-zapret-gui
   - default: false
     description: Cloudflare WARP VPN and Zero Trust client
-    icon: cloudflare-warp
+    icon: cloudflare
     id: warp
     options:
     - id: install
