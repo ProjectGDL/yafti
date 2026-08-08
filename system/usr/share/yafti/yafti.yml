@@ -725,6 +725,20 @@ screens:
       "not installed"
     title: gdl-zapret-gui
   - default: false
+    description: Cloudflare WARP VPN and Zero Trust client
+    icon: cloudflare-warp
+    id: warp
+    options:
+    - id: install
+      label: Install/Update Cloudflare WARP
+      script: ujust warp-install; status=$?; exit $status
+    - id: uninstall
+      label: Uninstall Cloudflare WARP
+      script: ujust warp-remove; status=$?; exit $status
+    status_script: test -f /var/lib/extensions/warp.raw && echo "installed" || echo
+      "not installed"
+    title: Cloudflare WARP
+  - default: false
     description: Automatic local proxy that keeps Flathub reachable when the direct link is blocked
     icon: network-server
     id: inetresqued
